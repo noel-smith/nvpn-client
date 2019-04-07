@@ -25,9 +25,8 @@ docker run -it --cap-add=NET_ADMIN -e OVPN_USERNAME=... -e OVPN_PASSWORD=.... -e
 
 You can verify it's working correctly you can exec into the container and use curl to check it's IP details:
 
-```
+```console
 $ docker run -d --cap-add=NET_ADMIN --name nvpnc -e OVPN_USERNAME=... -e OVPN_PASSWORD=... noelsmith/nvpn-client
-
 $ docker exec -it nvpnc bash
 bash-4.4# curl ipinfo.io
 {
@@ -41,7 +40,6 @@ bash-4.4# curl ipinfo.io
   "org": "AS9009 M247 Ltd"
 }
 ```
-
 
 ## With Docker Compose
 
@@ -71,7 +69,7 @@ services:
 
 ```
 
-Example output using VNC:
+Example output using VNC (from a UK-based machine):
 
 ![Screenshot of Chrome browser using VPN via VNC](https://noel-smith.github.io/images/nvpn-client-vnc.png)
 
