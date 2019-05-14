@@ -4,8 +4,9 @@ This docker image contains an OpenVPN client for use with Nord VPN credentials. 
 
 It automatically selects a server using the recommendation from this page: https://nordvpn.com/servers/.
 
-By default it uses a host in the US, but this can be altered by passing a different country code in the `NVPN_COUNTRY_CODE` environment variable.
+By default it uses a host in the US, but this can be altered by passing a different country code in the `NVPN_COUNTRY_CODE` environment variable. Alternatively the host can be forced using `NVPN_HOST`.
 
+UDP is the default protocol, but TCP can also be used by setting `NVPN_PORT_TYPE` to `TCP`.
 
 ## Standalone Usage
 
@@ -20,8 +21,21 @@ docker run -it --cap-add=NET_ADMIN -e OVPN_USERNAME=... -e OVPN_PASSWORD=... noe
 Basic usage (UK server):
 
 ```
-docker run -it --cap-add=NET_ADMIN -e OVPN_USERNAME=... -e OVPN_PASSWORD=.... -e NVPN_COUNTRY_CODE=227 noelsmith/nvpn-client
+docker run -it --cap-add=NET_ADMIN -e OVPN_USERNAME=... -e OVPN_PASSWORD=... -e NVPN_COUNTRY_CODE=227 noelsmith/nvpn-client
 ```
+
+Specific server:
+
+```
+docker run -it --cap-add=NET_ADMIN -e OVPN_USERNAME=... -e OVPN_PASSWORD=... -e NVPN_HOST=us2739.nordvpn.com noelsmith/nvpn-client
+```
+
+Over TCP:
+
+```
+docker run -it --cap-add=NET_ADMIN -e OVPN_USERNAME=... -e OVPN_PASSWORD=.... -e NVPN_PORT_TYPE=TCP noelsmith/nvpn-client
+```
+
 
 You can verify it's working correctly you can exec into the container and use curl to check it's IP details:
 
@@ -59,6 +73,7 @@ services:
       - OVPN_USERNAME=...
       - OVPN_PASSWORD=...
       - NVPN_COUNTRY_CODE=228
+      - NVPN_PORT_TYPE=UDP
     ports:
       - "4444:4444"  # Selenium port
       - "5901:5900"  # VNC port

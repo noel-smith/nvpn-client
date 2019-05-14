@@ -8,11 +8,18 @@ query_prefix='https://nordvpn.com/wp-admin/admin-ajax.php?action=servers_recomme
 query_suffix=',%22servers_groups%22:%5B11%5D,%22servers_technologies%22:%5B3%5D%7D'
 country_code=${NVPN_COUNTRY_CODE:-228}
 
-echo "Determining best server for ${country_code}"
-vpn_host=$(curl -s "${query_prefix}${country_code}${query_suffix}" | jq -r '.[0]["hostname"]')
+if [ -z ${NVPN_HOST} ] ; then
+    echo "Determining best server for ${country_code}"
+    NVPN_HOST=$(curl -s "${query_prefix}${country_code}${query_suffix}" | jq -r '.[0]["hostname"]')
+fi
 
-echo "Server selected: ${vpn_host}, retreving config"
-curl -s "https://downloads.nordcdn.com/configs/files/ovpn_legacy/servers/${vpn_host}.udp1194.ovpn" > /etc/openvpn/config.opvn
+case ${NVPN_PORT_TYPE} in
+    TCP) NVPN_PORT_NAME=tcp443 ;;
+    *) NVPN_PORT_NAME=udp1194 ;;
+esac
+
+echo "Server selected: ${NVPN_HOST} using ${NVPN_PORT_NAME}, retrieving config"
+curl -s "https://downloads.nordcdn.com/configs/files/ovpn_legacy/servers/${NVPN_HOST}.${NVPN_PORT_NAME}.ovpn" > /etc/openvpn/config.opvn
 
 # Add Alpine scripts to configure resolve.conf
 sed -i \
