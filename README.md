@@ -8,6 +8,8 @@ By default it uses a host in the US, but this can be altered by passing a differ
 
 UDP is the default protocol, but TCP can also be used by setting `NVPN_PORT_TYPE` to `TCP`.
 
+The VPN configuration means that all non-local traffic is routed through the tunnel. If you expose ports that you want to be accessible to other hosts on the local network you'll need to define them in `LOCAL_NETWORKS`. The value should be a semi-colon delimited list of networks i.e. `LOCAL_NETWORKS=192.168.0.0/16` or `LOCAL_NETWORKS=192.168.1.0/24;172.16.0.0/16;192.168.10.0/24`.
+
 ## Standalone Usage
 
 Replace the `OVPN_USERNAME` and `OVPN_PASSWORD` values in the commands below with your credentials supplied by Nord VPN.
@@ -74,6 +76,7 @@ services:
       - OVPN_PASSWORD=...
       - NVPN_COUNTRY_CODE=228
       - NVPN_PORT_TYPE=UDP
+      - LOCAL_NETWORKS=192.168.1.0/24  # Replace with actual network
     ports:
       - "4444:4444"  # Selenium port
       - "5901:5900"  # VNC port

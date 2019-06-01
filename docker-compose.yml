@@ -11,6 +11,7 @@ services:
       - NVPN_COUNTRY_CODE=228 # 228=US, 227=UK
       - NVPN_PORT_TYPE=UDP # UDP or TCP
       # - NVPN_HOST=us2739.nordvpn.com  # Uncomment to force host
+      # - LOCAL_NETWORKS=192.168.0.0/16  # Only required for remote access
     ports:
       - "4444:4444" # Selenium port
       - "5901:5900" # VNC port
