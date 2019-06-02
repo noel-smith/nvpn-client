@@ -1,0 +1,60 @@
+AL 2 Albania  
+AR 10 Argentina  
+AU 13 Australia  
+AT 14 Austria  
+BE 21 Belgium  
+BA 27 Bosnia and Herzegovina  
+BR 30 Brazil  
+BG 33 Bulgaria  
+CA 38 Canada  
+CL 43 Chile  
+CR 52 Costa Rica  
+HR 54 Croatia  
+CY 56 Cyprus  
+CZ 57 Czech Republic  
+DK 58 Denmark  
+EG 64 Egypt  
+EE 68 Estonia  
+FI 73 Finland  
+FR 74 France  
+GE 80 Georgia  
+DE 81 Germany  
+GR 84 Greece  
+HK 97 Hong Kong  
+HU 98 Hungary  
+IS 99 Iceland  
+IN 100 India  
+ID 101 Indonesia  
+IE 104 Ireland  
+IL 105 Israel  
+IT 106 Italy  
+JP 108 Japan  
+LV 119 Latvia  
+LU 126 Luxembourg  
+MY 131 Malaysia  
+MX 140 Mexico  
+MD 142 Moldova  
+NL 153 Netherlands  
+NZ 156 New Zealand  
+MK 128 North Macedonia  
+NO 163 Norway  
+PL 174 Poland  
+PT 175 Portugal  
+RO 179 Romania  
+RS 192 Serbia  
+SG 195 Singapore  
+SK 196 Slovakia  
+SI 197 Slovenia  
+ZA 200 South Africa  
+KR 114 South Korea  
+ES 202 Spain  
+SE 208 Sweden  
+CH 209 Switzerland  
+TW 211 Taiwan  
+TH 214 Thailand  
+TR 220 Turkey  
+UA 225 Ukraine  
+AE 226 United Arab Emirates  
+GB 227 United Kingdom  
+US 228 United States  
+VN 234 Vietnam  
